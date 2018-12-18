@@ -1,2 +1,2 @@
-# general_ai
+# gGeneral-ai
 General Desktop Deep Reinforcment Learning 
