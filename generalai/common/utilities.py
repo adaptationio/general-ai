@@ -50,7 +50,7 @@ class DataGrabber():
 
     def get_screen_array(self, top, left, width, height):
         with mss.mss() as sct:
-            monitor = {"top": top "left": left, "width": width, "height": height}
+            monitor = {"top": top, "left": left, "width": width, "height": height}
 
             img = numpy.array(sct.grab(monitor))
             return img
@@ -63,12 +63,11 @@ class DataGrabber():
                 cv2.imshow("OpenCV/Numpy normal", img)
                 if cv2.waitKey(25) & 0xFF == ord("q"):
                     cv2.destroyAllWindows()
-                    break
+
             else:
                 cv2.imshow('OpenCV/Numpy grayscale', cv2.cvtColor(img, cv2.COLOR_BGRA2GRAY))
                 if cv2.waitKey(25) & 0xFF == ord("q"):
                     cv2.destroyAllWindows()
-                    break
             return img
 
 
@@ -76,27 +75,31 @@ class Controller():
     def __init__(self):
         
         self.love = 'Ramona'
+        pyautogui.FAILSAFE = False
+        pyautogui.PAUSE = 1 
 
     def yeah(self):
         cunt = "Cunt"
 
     def get_postiion(self):
-        pass
+        self.position = pyautogui.position()
+        return self.position
 
     def get_screen_size(self):
-        pass
+        self.height, self.width = pyautogui.size()
+        return self.height, self.width
 
-    def move_mouse(self):
-        pass
+    def move_mouse(self, x_coordinate, y_coordinate, duration):
+        pyautogui.moveTo(x_coordinate, y_coordinate, duration)
 
     def click_mouse(self):
-        pass
+        pyautogui.click()
 
-    def move_click_mouse(self):
-        pass
+    def move_click_mouse(self, x, y, clicks, interval, button):
+        pyautogui.click(x=x, y=y, clicks=1, interval=1, button='left')
     
-    def key_press(self):
-        pass
+    def key_press(self, key='enter'):
+        pyautogui.press(key)
 
 
    
@@ -111,7 +114,7 @@ class Controller():
     
 #dates = ["2016", "2017", "2018"]
 test = DataGrabber()
-test.get_screen_img_show(False)
+test.get_screen()
 #ata = test.load_state_2()
 #print(len(data[1]))
 #candles = test.get_candles(dates[0]+'-01-01T00:00:00Z', 2, "M1", "EUR_USD")
