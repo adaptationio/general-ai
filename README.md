@@ -19,7 +19,7 @@ General desktop Deep Reinforcement Learning Agent
 	- __Windows__: 
 	```bash
 	conda create --name general-ai python=3.6 
-	activate trader-rl
+	activate general-ai
 	```
 - Install requirements:
     ```bash
