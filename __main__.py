@@ -2,10 +2,13 @@ import argparse
 
 import gym
 import numpy as np
+from generalai import *
+
+
 
 
 def main():
-    pass
+    env = State()
     
     
 

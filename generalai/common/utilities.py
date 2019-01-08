@@ -77,6 +77,13 @@ class Controller():
         self.love = 'Ramona'
         pyautogui.FAILSAFE = False
         pyautogui.PAUSE = 1 
+    
+    def actions(self, actions):
+        action = actions[0]
+        x = actions[1]
+        y= actions[2]
+        click = actions[3]
+        self.action[self.move_mouse(x,y), self.click_mouse(click), self.move_click_mouse(x,y,click)]
 
     def yeah(self):
         cunt = "Cunt"
@@ -95,8 +102,8 @@ class Controller():
     def click_mouse(self):
         pyautogui.click()
 
-    def move_click_mouse(self, x, y, clicks, interval, button):
-        pyautogui.click(x=x, y=y, clicks=1, interval=1, button='left')
+    def move_click_mouse(self, x, y, clicks, interval=1, button):
+        pyautogui.click(x=x, y=y, clicks=clicks, interval=1, button='left')
     
     def key_press(self, key='enter'):
         pyautogui.press(key)
